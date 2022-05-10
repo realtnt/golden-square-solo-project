@@ -35,7 +35,7 @@ RSpec.describe Order do
     it 'should return the time the order was submitted' do
       time_dbl = double :time
       delivery_time = DeliveryTime.new(time_dbl)
-      expect(time_dbl).to receive(:now).and_return(DateTime.parse("2022-05-10 17:17:08.084023258 +0100"))
+      expect(time_dbl).to receive(:now).and_return(Time.new(2022,05,10,17,17,00))
       cart = double :Cart
       cart_item_1 = double :CartItem, name: 'Fake Dish 1',price: 8.99
       customer = double :Customer, full_name: 'Jim Bob', address: '1 First St', mobile: '07777 777777'
@@ -46,7 +46,6 @@ RSpec.describe Order do
     it 'should fail if the order was NOT submitted' do
       time_dbl = double :time
       delivery_time = DeliveryTime.new(time_dbl)
-      allow(time_dbl).to receive(:now).and_return(DateTime.parse("2022-05-10 17:17:08.084023258 +0100"))
       cart = double :Cart
       cart_item_1 = double :CartItem, name: 'Fake Dish 1',price: 8.99
       customer = double :Customer, full_name: 'Jim Bob', address: '1 First St', mobile: '07777 777777'

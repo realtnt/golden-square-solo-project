@@ -6,8 +6,20 @@ RSpec.describe DeliveryTime do
     it 'should return 30' do
       time_dbl = double :time
       delivery_time = DeliveryTime.new(time_dbl)
-      expect(time_dbl).to receive(:now).and_return(DateTime.parse("2022-05-10 17:17:08.084023258 +0100"))
+      expect(time_dbl).to receive(:now).and_return(Time.new(2022,05,10,17,17,00))
       expect(delivery_time.get_delivery_time).to eq 30
+    end
+    it 'should return 45' do
+      time_dbl = double :time
+      delivery_time = DeliveryTime.new(time_dbl)
+      expect(time_dbl).to receive(:now).and_return(Time.new(2022,05,10,19,17,00))
+      expect(delivery_time.get_delivery_time).to eq 45
+    end
+    it 'should return 35' do
+      time_dbl = double :time
+      delivery_time = DeliveryTime.new(time_dbl)
+      expect(time_dbl).to receive(:now).and_return(Time.new(2022,05,10,21,17,00))
+      expect(delivery_time.get_delivery_time).to eq 35
     end
   end
 end

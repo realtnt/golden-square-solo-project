@@ -67,9 +67,10 @@ RSpec.describe 'Ordering System Integration' do
     end
   end
 
-  
-    # Formatting text to send via SMS
-    # sms_text = DeliveryTextFormatter.new
-    # sms_text.format
-    # => 'Thank you! Your order was placed and will be delivered before 18:52'
+  context 'When sending an SMS' do
+    xit 'should return the message as a string' do
+      sms_text = DeliveryTextFormatter.new
+      expect(sms_text.format).to eq 'Thank you! Your order was placed and will be delivered before 18:52'
+    end
+  end
 end

@@ -11,10 +11,10 @@ class DeliveryTime
 
   def get_delivery_time 
     # current hour
-    hour = @time.now.strftime("%k").to_i
-    if hour > 21
+    hour = @time.now.hour
+    if hour >= 21
       return DELIVERY_TIME_9PM_11PM
-    elsif hour > 19
+    elsif hour >= 19
       return DELIVERY_TIME_7PM_9PM
     else
       return DELIVERY_TIME_5PM_7PM
