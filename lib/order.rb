@@ -28,4 +28,8 @@ class Order
     fail 'Order not submitted!' if @date_time == 0
     @date_time.strftime("%d/%m/%Y, %k:%M")
   end
+
+  def get_order_time
+    @date_time
+  end
 end

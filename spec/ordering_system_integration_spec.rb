@@ -59,7 +59,7 @@ RSpec.describe 'Ordering System Integration' do
       cart.add_item(cart_item_3)
       customer = Customer.new('Jim Bob', '1 First St', '07777 777777')
       time_dbl = double :time
-      expect(time_dbl).to receive(:now).and_return(DateTime.parse("2022-05-10 17:17:08.084023258 +0100"))
+      expect(time_dbl).to receive(:now).and_return(Time.new(2022,05,10,17,17,00))
       order = Order.new(customer, cart, time_dbl)
       order.submit
       order_formatter = OrderFormatter.new(order)
@@ -68,9 +68,22 @@ RSpec.describe 'Ordering System Integration' do
   end
 
   context 'When sending an SMS' do
-    xit 'should return the message as a string' do
-      sms_text = DeliveryTextFormatter.new
-      expect(sms_text.format).to eq 'Thank you! Your order was placed and will be delivered before 18:52'
+    it 'should return the message as a string' do
+      cart = Cart.new
+      cart_item_1 = CartItem.new('Dish 1', 8.99)
+      cart_item_2 = CartItem.new('Dish 2', 1.99)
+      cart_item_3 = CartItem.new('Dish 3', 3.99)
+      cart.add_item(cart_item_1)
+      cart.add_item(cart_item_2)
+      cart.add_item(cart_item_3)
+      customer = Customer.new('Jim Bob', '1 First St', '07777 777777')
+      time_dbl = double :time
+      allow(time_dbl).to receive(:now).and_return(Time.new(2022,05,10,17,17,00))
+      order = Order.new(customer, cart, time_dbl)
+      order.submit
+      delivery_time = DeliveryTime.new(time_dbl)
+      sms_text = DeliveryTextFormatter.new(order, delivery_time)
+      expect(sms_text.format).to eq 'Thank you! Your order was placed and will be delivered before 17:47'
     end
   end
 end

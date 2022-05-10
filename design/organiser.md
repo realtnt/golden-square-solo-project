@@ -69,6 +69,22 @@ class Order
 
     # sends order to kitchen, ie @submitted = true
   end
+
+  def customer
+    # returns the customer object
+  end
+
+  def cart
+    # returns the cart object
+  end
+
+  def date_time
+    # returns the date and time as String
+  end
+
+  def get_order_time
+    # returns the order time as a Time object
+  end
 end
 
 class Cart
