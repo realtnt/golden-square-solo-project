@@ -1,11 +1,13 @@
 class TextSender
-  def initialize(text, service) # text to send, 
-                                # service is an instance of TextService
-    @text = text
-    @service = service
+  def initialize(message, mobile, service = 'Twilio') 
+    @message = message
+    @mobile = mobile
+    if service == 'Twilio'
+      @service = TwilioService.new
+    end
   end
 
   def send
-    # calls the TextService's send_text method to send the text
+    @service.send_text(@message, @mobile) == 'queued' ? true : false
   end
 end
