@@ -17,7 +17,7 @@ RSpec.describe Order do
     it 'should return a customer object' do
       cart = double :Cart
       cart_item_1 = double :CartItem, name: 'Fake Dish 1',price: 8.99
-      customer = double :Customer, full_name: 'Jim Bob', address: '1 First St', mobile: '07777 777777'
+      customer = double :Customer, full_name: 'Jim Bob', address: '1 First St', mobile: '+447777111222'
       order = Order.new(customer, cart)
       expect(order.customer).to eq customer
     end
@@ -26,7 +26,7 @@ RSpec.describe Order do
     it 'should return a cart object' do
       cart = double :Cart
       cart_item_1 = double :CartItem, name: 'Fake Dish 1',price: 8.99
-      customer = double :Customer, full_name: 'Jim Bob', address: '1 First St', mobile: '07777 777777'
+      customer = double :Customer, full_name: 'Jim Bob', address: '1 First St', mobile: '+447777111222'
       order = Order.new(customer, cart)
       expect(order.cart).to eq cart
     end
@@ -38,7 +38,7 @@ RSpec.describe Order do
       expect(time_dbl).to receive(:now).and_return(Time.new(2022,05,10,17,17,00))
       cart = double :Cart
       cart_item_1 = double :CartItem, name: 'Fake Dish 1',price: 8.99
-      customer = double :Customer, full_name: 'Jim Bob', address: '1 First St', mobile: '07777 777777'
+      customer = double :Customer, full_name: 'Jim Bob', address: '1 First St', mobile: '+447777111222'
       order = Order.new(customer, cart, time_dbl)
       order.submit
       expect(order.date_time).to eq '10/05/2022, 17:17'
@@ -48,7 +48,7 @@ RSpec.describe Order do
       delivery_time = DeliveryTime.new(time_dbl)
       cart = double :Cart
       cart_item_1 = double :CartItem, name: 'Fake Dish 1',price: 8.99
-      customer = double :Customer, full_name: 'Jim Bob', address: '1 First St', mobile: '07777 777777'
+      customer = double :Customer, full_name: 'Jim Bob', address: '1 First St', mobile: '+447777111222'
       order = Order.new(customer, cart, time_dbl)
       expect{order.date_time}.to raise_error 'Order not submitted!'
     end

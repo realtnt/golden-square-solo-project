@@ -57,13 +57,13 @@ RSpec.describe 'Ordering System Integration' do
       cart.add_item(cart_item_1)
       cart.add_item(cart_item_2)
       cart.add_item(cart_item_3)
-      customer = Customer.new('Jim Bob', '1 First St', '07777 777777')
+      customer = Customer.new('Jim Bob', '1 First St', '+447777111222')
       time_dbl = double :time
       expect(time_dbl).to receive(:now).and_return(Time.new(2022,05,10,17,17,00))
       order = Order.new(customer, cart, time_dbl)
       order.submit
       order_formatter = OrderFormatter.new(order)
-      expect(order_formatter.format).to eq "Customer: Jim Bob\nAddress: 1 First St\nMobile: 07777 777777\nDate: 10/05/2022, 17:17\n1. Dish 1: £8.99\n2. Dish 2: £1.99\n3. Dish 3: £3.99\nTotal: £14.97"
+      expect(order_formatter.format).to eq "Customer: Jim Bob\nAddress: 1 First St\nMobile: +447777111222\nDate: 10/05/2022, 17:17\n1. Dish 1: £8.99\n2. Dish 2: £1.99\n3. Dish 3: £3.99\nTotal: £14.97"
     end
   end
 
@@ -76,7 +76,7 @@ RSpec.describe 'Ordering System Integration' do
       cart.add_item(cart_item_1)
       cart.add_item(cart_item_2)
       cart.add_item(cart_item_3)
-      customer = Customer.new('Jim Bob', '1 First St', '07777 777777')
+      customer = Customer.new('Jim Bob', '1 First St', '+447777111222')
       time_dbl = double :time
       allow(time_dbl).to receive(:now).and_return(Time.new(2022,05,10,17,17,00))
       order = Order.new(customer, cart, time_dbl)
