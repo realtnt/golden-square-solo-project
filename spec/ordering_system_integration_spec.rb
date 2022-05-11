@@ -27,7 +27,7 @@ RSpec.describe 'Ordering System Integration' do
     end
     it 'should return a formatted string of all the dishes' do
       menu_formatter = MenuFormatter.new(menu)
-      expect(menu_formatter.format).to eq '1. Dish 1: £8.99\n2. Dish 2: £1.99\n3. Dish 3: £3.99'
+      expect(menu_formatter.format).to eq "1. Dish 1: £8.99\n2. Dish 2: £1.99\n3. Dish 3: £3.99"
     end
   end
 
@@ -44,7 +44,7 @@ RSpec.describe 'Ordering System Integration' do
     end
     it 'should return a formatted string of all the dishes' do
       cart_formatter = CartFormatter.new(cart)
-      expect(cart_formatter.format).to eq '1. Cart Item 1: £8.99\n2. Cart Item 2: £1.99\n3. Cart Item 3: £3.99'
+      expect(cart_formatter.format).to eq "1. Cart Item 1: £8.99\n2. Cart Item 2: £1.99\n3. Cart Item 3: £3.99"
     end
   end
 

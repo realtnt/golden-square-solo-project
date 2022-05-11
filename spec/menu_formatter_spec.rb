@@ -9,7 +9,7 @@ RSpec.describe MenuFormatter do
       dish_3 = double :Dish, name: 'Fake Dish 3', price: 3.99
       expect(menu).to receive(:get_menu).and_return([dish_1, dish_2, dish_3])
       menu_formatter = MenuFormatter.new(menu)
-      expect(menu_formatter.format).to eq '1. Fake Dish 1: £8.99\n2. Fake Dish 2: £1.99\n3. Fake Dish 3: £3.99'
+      expect(menu_formatter.format).to eq "1. Fake Dish 1: £8.99\n2. Fake Dish 2: £1.99\n3. Fake Dish 3: £3.99"
     end
   end
 end

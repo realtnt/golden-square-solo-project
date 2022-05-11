@@ -9,7 +9,7 @@ RSpec.describe CartFormatter do
       cart_item_3 = double :CartItem, name: 'Cart Item 3', price: 3.99
       expect(cart).to receive(:get_items).and_return([cart_item_1, cart_item_2, cart_item_3])
       cart_formatter = CartFormatter.new(cart)
-      expect(cart_formatter.format).to eq '1. Cart Item 1: £8.99\n2. Cart Item 2: £1.99\n3. Cart Item 3: £3.99'
+      expect(cart_formatter.format).to eq "1. Cart Item 1: £8.99\n2. Cart Item 2: £1.99\n3. Cart Item 3: £3.99"
     end
   end
 end

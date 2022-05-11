@@ -4,6 +4,6 @@ class CartFormatter
   end
 
   def format
-    @cart.get_items.map.with_index{|item, i| "#{i+1}. #{item.name}: £#{item.price}"}.join('\n')
+    @cart.get_items.map.with_index{|item, i| "#{i+1}. #{item.name}: £#{item.price}"}.join("\n")
   end
 end
