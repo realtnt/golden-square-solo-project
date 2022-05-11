@@ -10,6 +10,6 @@ class OrderFormatter
     output += "Date: #{@order.date_time}\n"
     output += @order.cart.get_items.map.with_index{|item, i| "#{i+1}. #{item.name}: £#{item.price}"}.join("\n")
     output += "\n"
-    output += "Total: £#{@order.cart.get_items.sum{|item| item.price}}"
+    output += "Total: £#{'%.2f' % @order.cart.get_items.sum{|item| item.price}}"
   end
 end
