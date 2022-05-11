@@ -13,6 +13,11 @@ RSpec.describe Cart do
       expect(cart.get_items).to eq [cart_item_1, cart_item_2, cart_item_3]
       cart.remove_item(cart_item_3)
       expect(cart.get_items).to eq [cart_item_1, cart_item_2]
+      cart.add_item(cart_item_3)
+      cart.add_item(cart_item_3)
+      cart.add_item(cart_item_3)
+      cart.remove_item(cart_item_3)
+      expect(cart.get_items).to eq [cart_item_1, cart_item_2, cart_item_3, cart_item_3]
     end
   end
   context 'Attempting to add items with invalid data to the menu' do

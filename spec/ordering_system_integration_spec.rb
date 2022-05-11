@@ -1,16 +1,7 @@
-require 'cart_item'
-require 'cart'
-require 'cart_formatter'
-require 'customer'
-require 'order'
-require 'order_formatter'
-require 'dish'
-require 'menu'
-require 'menu_formatter'
-require 'delivery_time'
-require 'delivery_text_formatter'
-require 'text_sender'
-require 'twilio'
+$LOAD_PATH << './lib'
+require 'require_all'
+
+require_all 'lib'
 
 RSpec.describe 'Ordering System Integration' do
   context 'Adding items to the menu' do
