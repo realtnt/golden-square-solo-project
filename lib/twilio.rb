@@ -1,8 +1,7 @@
 require 'dotenv/load'
 require 'twilio-ruby'
-require 'text_service'
 
-class TwilioService < TextService
+class TwilioService
   def initialize
     @account_sid = ENV['TWILIO_ACCOUNT_SID']
     @auth_token = ENV['TWILIO_AUTH_TOKEN']

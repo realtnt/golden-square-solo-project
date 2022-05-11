@@ -10,7 +10,6 @@ require 'menu_formatter'
 require 'delivery_time'
 require 'delivery_text_formatter'
 require 'text_sender'
-require 'text_service'
 require 'twilio'
 
 RSpec.describe 'Ordering System Integration' do
