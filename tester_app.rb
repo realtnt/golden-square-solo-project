@@ -9,10 +9,24 @@ dishes = [
   Dish.new('Dish 2', 1.99),
   Dish.new('Dish 3', 3.99)
 ]
-
-menu.add_dish(dish_1)
-menu.add_dish(dish_2)
-menu.add_dish(dish_3)
-
+dishes.map{|dish| menu.add_dish(dish)}
 menu_formatter = MenuFormatter.new(menu)
-puts menu_formatter.format
+
+user_selection = []
+while true
+  puts menu_formatter.format
+  print 'Choose dish number or N for next step: '
+  user_response = gets.chomp
+  break if user_response.downcase == 'n'
+  user_selection << CartItem.new(dishes[user_response.to_i - 1].name, dishes[user_response.to_i - 1].price)
+end
+
+cart = Cart.new
+user_selection.map{|item| cart.add_item(item)}
+
+cart_formatter = CartFormatter.new(cart)
+puts cart_formatter.format
+
+
+# unless submitted
+# end
