@@ -9,7 +9,7 @@ class Cart
   end
 
   def remove_item(cart_item)
-    @items.delete(cart_item)
+    @items.delete_at(@items.index(cart_item))
   end
 
   def get_items
