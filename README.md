@@ -27,7 +27,7 @@ The `CartFormatter` - similar to `MenuFormatter` - is used for the `Cart` presen
 
 For **user story 3**, I created the `Order` class. It uses a `Customer` object to take the customer's details and it has a `submit` method which marks the order as submitted. In a future implementation, `submit` could also be used to send the order to a back office UI used by the kitchen staff. As before, there's a formatter class: `OrderFormatter` used to show the itemised receipt with a grand total along with other details. (date, time, etc)
 
-For **user story 4**, I utilized the Twilio platform. I created the `TwilioService` class which handles the connection and sends the SMS using the Twilio API. The `TextSender` class creates another layer of abstraction, essentially decoupling the Twilio API calls from the rest of the system. 
+For **user story 4**, I utilised the Twilio platform. I created the `TwilioService` class which handles the connection and sends the SMS using the Twilio API. The `TextSender` class creates another layer of abstraction, essentially decoupling the Twilio API calls from the rest of the system. 
 `DeliveryTextFormatter` creates the message to be sent via SMS. It extracts the order time from an `Order` object that is passed to it and uses the `DeliveryTime` class' `get_delivery_time` method to calculate an ETA for the order.
 The `get_delivery_time` method in its current form, simply adds a default waiting time depending on the current time. This method could have been added to the `Order` class, but future implementations could be taking into account pending orders, the day of the week, time, etc, so it could potentially bloat the `Order` class with functionality that is not strictly related to the order process.
 
@@ -38,7 +38,7 @@ I followed the steps in the **Multi-Class Planned Design Recipe**.
 
 I started by reading the user stories and understanding what needs to be implemented. I used *Excalidraw* to visualise my design. This process took a substantial amount of time and many iterations until I reached a design that looked good enough to go to the next stage.
 
-I wrote down the class interfaces, a process which led in some minor re-designs of the classes, their methods and attributes.
+I wrote down the class interfaces, a process which led to some minor re-designs of the classes, their methods and attributes.
 
 Finally, I made a list of integration tests and unit tests. This process also yielded some changes after finding some flaws in my initial design.
 
@@ -49,9 +49,9 @@ I made sure that I took enough time to create an initial design that I was happy
 
 I started with quite a monolithic design, but I believe that I managed to break it down into classes in a way that would allow the addition of more features relatively easily.
 
-Another reason for taking my time during this phase was to make sure that I didn't have to go back and make any major changes which would inevitably lead in a substantial delay.
+Another reason for taking my time during this phase was to make sure that I didn't have to go back and make any major changes which would inevitably lead to a substantial delay.
 
-However, despite of the time I took, I found that there were still tweaks that I had to make to the way some classes or methods worked. In most cases that meant that I also had to tweak the tests in order to implement those changes. Having the tests helped to double-check that my changes didn't break anything else in the system.
+However, despite the time I took, I found that there were still tweaks that I had to make to the way some classes or methods worked. In most cases that meant that I also had to tweak the tests in order to implement those changes. Having the tests helped to double-check that my changes didn't break anything else in the system.
 
 Finally, creating a little tester program was a great way to validate that the design was fit for purpose but also helped to pick up some more tweaks that were needed and bugs. 
 
